@@ -7,12 +7,13 @@ import { useState, useEffect } from "react";
 
 function App() {
   //State to hold the list of todos
-  const [todos, setTodos] = useState([
-    { input: "Hello! Add your first todo!", complete: true },
-  ]);
+  const [todos, setTodos] = useState([]);
 
   //State to hold the currently selected tab
   const [selectedTab, setSelectedTab] = useState("Open");
+
+  //State to hold the input value for a new todo
+  const [inputValue, setInputValue] = useState("");
 
   //Function to add a new todo
   function handleAddTodo(newTodo) {
@@ -27,6 +28,18 @@ function App() {
     let completedTodo = todos[index];
     completedTodo["complete"] = true;
     newTodoList[index] = completedTodo;
+    setTodos(newTodoList);
+    handleSaveData(newTodoList);
+  }
+
+  //Function to edit a todo
+  function handleEditTodo(index) {
+    let newTodoList = [...todos];
+    let editedTodo = todos[index];
+    setInputValue(editedTodo.input);
+    newTodoList = todos.filter((val, valIndex) => {
+      return valIndex !== index;
+    });
     setTodos(newTodoList);
     handleSaveData(newTodoList);
   }
@@ -64,11 +77,15 @@ function App() {
       />
       <TodoList
         handleCompleteTodo={handleCompleteTodo}
+        handleEditTodo={handleEditTodo}
         handleDeleteTodo={handleDeleteTodo}
         selectedTab={selectedTab}
         todos={todos}
       />
-      <TodoInput handleAddTodo={handleAddTodo} />
+      <TodoInput
+      inputValue={inputValue}
+      setInputValue={setInputValue} 
+      handleAddTodo={handleAddTodo} />
     </>
   );
 }

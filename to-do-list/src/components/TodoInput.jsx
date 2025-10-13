@@ -1,8 +1,5 @@
-import { useState } from "react";
-
 export function TodoInput(props) {
-  const { handleAddTodo } = props;
-  const [inputValue, setInputValue] = useState("");
+  const { handleAddTodo, inputValue, setInputValue } = props;
 
   return (
     //Input field and button to add a new todo
@@ -10,8 +7,12 @@ export function TodoInput(props) {
       <input
         id="todo-input"
         value={inputValue}
-        onChange={(e) => {
-          setInputValue(e.target.value);
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && inputValue) {
+            handleAddTodo(inputValue);
+            setInputValue("");
+          }
         }}
         placeholder="Add a new task..."
       />
