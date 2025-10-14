@@ -1,2 +1,2 @@
-# project-portfolio
-Portfolio of project work
+# Project Portfolio
+Full portfolio of all completed project work
