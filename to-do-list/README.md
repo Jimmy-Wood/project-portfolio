@@ -1,3 +1,3 @@
 # To-do App
 
-React.JS To-do App using LocalStorage for persistent data
+A to-do application, with add, edit and remove functions. Built in React.JS with local storage for persistent data.
