@@ -59,7 +59,6 @@ export function AuthProvider(props) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      console.log("CURRENT USER:", user);
       setGlobalUser(user);
       // If no user, empty user state and return
       if (!user) {

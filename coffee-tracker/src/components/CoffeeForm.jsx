@@ -43,7 +43,6 @@ export default function CoffeeForm(props) {
       };
 
       newGlobalData[timestamp] = newData;
-      //console.log(timestamp, selectedCoffee, coffeeCost);
 
       //Update global state
       setGlobalData(newGlobalData);
